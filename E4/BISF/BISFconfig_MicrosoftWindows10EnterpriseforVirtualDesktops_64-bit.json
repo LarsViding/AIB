@@ -1,0 +1,80 @@
+[
+    {
+        "Path":  "HKLM:\\SOFTWARE\\Policies\\Login Consultants\\BISF",
+        "Name":  "LIC_BISF_CLI_OT",
+        "Value":  "NO",
+        "Type":  1
+    },
+    {
+        "Path":  "HKLM:\\SOFTWARE\\Policies\\Login Consultants\\BISF",
+        "Name":  "LIC_BISF_POL_EX",
+        "Value":  1,
+        "Type":  4
+    },
+    {
+        "Path":  "HKLM:\\SOFTWARE\\Policies\\Login Consultants\\BISF",
+        "Name":  "LIC_BISF_CLI_EX",
+        "Value":  "YES",
+        "Type":  1
+    },
+    {
+        "Path":  "HKLM:\\SOFTWARE\\Policies\\Login Consultants\\BISF",
+        "Name":  "LIC_BISF_CLI_EX_PT",
+        "Value":  "C:\\Program Files (x86)\\Base Image Script Framework (BIS-F)",
+        "Type":  1
+    },
+    {
+        "Path":  "HKLM:\\SOFTWARE\\Policies\\Login Consultants\\BISF",
+        "Name":  "LIC_BISF_POL_LogCfg",
+        "Value":  1,
+        "Type":  4
+    },
+    {
+        "Path":  "HKLM:\\SOFTWARE\\Policies\\Login Consultants\\BISF",
+        "Name":  "LIC_BISF_CLI_LogCfg",
+        "Value":  "YES",
+        "Type":  1
+    },
+    {
+        "Path":  "HKLM:\\SOFTWARE\\Policies\\Login Consultants\\BISF",
+        "Name":  "LIC_BISF_CLI_LSb",
+        "Value":  1,
+        "Type":  4
+    },
+    {
+        "Path":  "HKLM:\\SOFTWARE\\Policies\\Login Consultants\\BISF",
+        "Name":  "LIC_BISF_CLI_LS",
+        "Value":  "C:\\Program Files (x86)\\Base Image Script Framework (BIS-F)",
+        "Type":  1
+    },
+    {
+        "Path":  "HKLM:\\SOFTWARE\\Policies\\Login Consultants\\BISF",
+        "Name":  "LIC_BISF_CLI_LF_RT",
+        "Value":  5,
+        "Type":  4
+    },
+    {
+        "Path":  "HKLM:\\SOFTWARE\\Policies\\Login Consultants\\BISF",
+        "Name":  "LIC_BISF_CLI_LOG_WPT",
+        "Value":  1,
+        "Type":  4
+    },
+    {
+        "Path":  "HKLM:\\SOFTWARE\\Policies\\Login Consultants\\BISF",
+        "Name":  "LIC_BISF_POL_ST",
+        "Value":  1,
+        "Type":  4
+    },
+    {
+        "Path":  "HKLM:\\SOFTWARE\\Policies\\Login Consultants\\BISF",
+        "Name":  "LIC_BISF_CLI_ST",
+        "Value":  "YES",
+        "Type":  1
+    },
+    {
+        "Path":  "HKLM:\\SOFTWARE\\Policies\\Login Consultants\\BISF",
+        "Name":  "LIC_BISF_CLI_AV",
+        "Value":  "NO",
+        "Type":  1
+    }
+]

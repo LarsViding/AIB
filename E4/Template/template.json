@@ -1,0 +1,178 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "SrcSKU": {
+            "defaultValue": "21h1-evd-o365pp",
+            "type": "string"
+        },
+        "SrcOffer": {
+            "defaultValue": "office-365",
+            "type": "string"
+        },
+        "SrcPublisher": {
+            "defaultValue": "MicrosoftWindowsDesktop",
+            "type": "string"
+        },
+        "imageId": {
+            "type": "string"
+        },
+        "identityId": {
+            "type": "string"
+        },
+        "Version": {
+            "defaultValue": "",
+            "type": "string"
+        },
+        "vmSize": {
+            "defaultValue": "Standard_D2_v2",
+            "type": "string"
+        },
+        "replicationRegions": {
+            "defaultValue": "westeurope",
+            "type": "string"
+        }
+    },
+    "variables": {
+        "combined": "[concat(parameters('SrcPublisher'),'.',parameters('SrcOffer'),'.',parameters('SrcSKU'))]",
+        "withVersion": "[concat(parameters('imageId'), '/versions/', parameters('Version'))]",
+        "imageDefStr": "[ if(empty(parameters('Version')), parameters('imageId'), variables('withVersion')) ]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.VirtualMachineImages/imageTemplates",
+            "apiVersion": "2020-02-14",
+            "name": "[variables('combined')]",
+            "location": "westeurope",
+            "identity": {
+                "type": "UserAssigned",
+                "userAssignedIdentities": {
+                    "[parameters('identityId')]": {}
+                }
+            },
+            "properties": {
+                "vmProfile": {
+                    "vmSize": "[parameters('vmSize')]"
+                },
+                "source": {
+                    "offer": "[parameters('SrcOffer')]",
+                    "publisher": "[parameters('SrcPublisher')]",
+                    "sku": "[parameters('SrcSKU')]",
+                    "type": "PlatformImage",
+                    "version": "latest"
+                },
+                "customize": [
+                    {
+                        "type": "PowerShell",
+                        "runAsSystem": true,
+                        "runElevated": true,
+                        "name": "Prep",
+                        "scriptUri": "https://raw.githubusercontent.com/JimMoyle/YouTube-WVD-Image-Deployment/main/E4/AppInstallScripts/Prep.ps1"
+                    },
+                    {
+                        "type": "PowerShell",
+                        "runAsSystem": true,
+                        "runElevated": true,
+                        "name": "OutputTest1",
+                        "scriptUri": "https://raw.githubusercontent.com/JimMoyle/YouTube-WVD-Image-Deployment/main/E4/AppInstallScripts/OutputTest1.ps1"
+                    },
+                    {
+                        "type": "PowerShell",
+                        "runAsSystem": true,
+                        "runElevated": true,
+                        "name": "OutputTest2",
+                        "scriptUri": "https://raw.githubusercontent.com/JimMoyle/YouTube-WVD-Image-Deployment/main/E4/AppInstallScripts/OutputTest2.ps1"
+                    },
+                    {
+                        "type": "PowerShell",
+                        "runElevated": true,
+                        "name": "Sysprep command change",
+                        "inline": [
+                            "Write-Output 'Changing Sysprep switches'",
+                            "((Get-Content -path C:\\DeprovisioningScript.ps1 -Raw) -replace 'Sysprep.exe /oobe /generalize /quiet /quit','Sysprep.exe /oobe /generalize /quit /mode:vm' ) | Set-Content -Path C:\\DeprovisioningScript.ps1",
+                            "$switches = Get-Content -path C:\\DeprovisioningScript.ps1 | Select-String -Pattern Sysprep.exe",
+                            "Write-Output \"New Sysprep command is $switches\""
+                        ]
+                    },
+                    {
+                        "type": "PowerShell",
+                        "runAsSystem": true,
+                        "runElevated": true,
+                        "name": "Powershell",
+                        "scriptUri": "https://raw.githubusercontent.com/JimMoyle/YouTube-WVD-Image-Deployment/main/E4/AppInstallScripts/Powershell.ps1"
+                    },
+                    {
+                        "type": "PowerShell",
+                        "runAsSystem": true,
+                        "runElevated": true,
+                        "name": "GitForWindows",
+                        "scriptUri": "https://raw.githubusercontent.com/JimMoyle/YouTube-WVD-Image-Deployment/main/E4/AppInstallScripts/GitForWindows.ps1"
+                    },
+                    {
+                        "type": "PowerShell",
+                        "runAsSystem": true,
+                        "runElevated": true,
+                        "name": "VSCode",
+                        "scriptUri": "https://raw.githubusercontent.com/JimMoyle/YouTube-WVD-Image-Deployment/main/E4/AppInstallScripts/VSCode.ps1"
+                    },
+                    {
+                        "type": "PowerShell",
+                        "runAsSystem": true,
+                        "runElevated": true,
+                        "name": "FSLogix",
+                        "scriptUri": "https://raw.githubusercontent.com/JimMoyle/YouTube-WVD-Image-Deployment/main/E4/AppInstallScripts/FSLogix.ps1"
+                    },
+                    {
+                        "type": "PowerShell",
+                        "runAsSystem": true,
+                        "runElevated": true,
+                        "name": "Teams",
+                        "scriptUri": "https://raw.githubusercontent.com/JimMoyle/YouTube-WVD-Image-Deployment/main/E4/AppInstallScripts/Teams.ps1"
+                    },
+                    {
+                        "type": "WindowsRestart",
+                        "restartCheckCommand": "write-host 'restarting post Apps Install'",
+                        "restartTimeout": "5m"
+                    },
+                    {
+                        "type": "WindowsUpdate",
+                        "searchCriteria": "IsInstalled=0",
+                        "filters": [
+                            "exclude:$_.Title -like '*Preview*'",
+                            "include:$true"
+                        ],
+                        "updateLimit": 200
+                    },
+                    {
+                        "type": "PowerShell",
+                        "runAsSystem": true,
+                        "runElevated": true,
+                        "name": "BIS-F",
+                        "scriptUri": "https://raw.githubusercontent.com/JimMoyle/YouTube-WVD-Image-Deployment/main/E4/AppInstallScripts/BISF.ps1"
+                    },
+                    {
+                        "type": "WindowsRestart",
+                        "restartCheckCommand": "write-host 'restarting post BISF'",
+                        "restartTimeout": "5m"
+                    }
+                ],
+                "distribute": [
+                    {
+                        "artifactTags": {
+                            "Project": "YouTube",
+                            "Author": "Jim Moyle"
+                        },
+                        "excludeFromLatest": false,
+                        "galleryImageId": "[variables('imageDefStr')]",
+                        "replicationRegions": [
+                            "[parameters('replicationRegions')]"
+                        ],
+                        "runOutputName": "[concat( 'runOutput', variables('combined'))]",
+                        "type": "SharedImage"
+                    }
+                ],
+                "buildTimeoutInMinutes": 0
+            }
+        }
+    ]
+}
