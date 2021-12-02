@@ -1,6 +1,6 @@
-Write-Output 'Start remove uneeded appx'
+Write-Output 'Start remove unneeded appx'
 
-#Remove uneeded appx
+#Remove unneeded appx
 $appname = @(
 "*windowscommunicationsapps*"
 "*officehub*"
@@ -28,7 +28,7 @@ $appname = @(
 ForEach($app in $appname){
 Get-AppxProvisionedPackage -Online | Where-Object {$_.PackageName -like $app} | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue
 }
-Write-Output 'Finisched - Remove uneeded appx'
+Write-Output 'Finisched - Remove unneeded appx'
 #Disable Internet Explorer
 Write-Output 'Start Disable Internet Explorer'
 Disable-WindowsOptionalFeature -FeatureName Internet-Explorer-Optional-amd64 -Online -NoRestart
