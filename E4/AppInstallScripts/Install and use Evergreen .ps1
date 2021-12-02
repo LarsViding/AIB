@@ -17,3 +17,7 @@ Get-EvergreenApp -Name "MicrosoftWvdBootloader"
 Get-EvergreenApp -Name "MicrosoftWvdInfraAgent"
 Get-EvergreenApp -Name "AdobeAcrobatReaderDC"
 
+$allVersions = Find-EvergreenApp -Name MicrosoftOneDrive | Get-EvergreenApp
+$Ring = $allVersions | Where-Object { $_.Ring -eq 'Production'} | Sort-Object -Descending -Property 'Version'
+$myVersion = $Ring | Where-Object { $_.Architecture -eq 'AMD64'}
+
