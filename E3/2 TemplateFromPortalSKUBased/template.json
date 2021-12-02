@@ -1,0 +1,66 @@
+﻿{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "SKU": {
+            "defaultValue": "21h1-evd-o365pp",
+            "type": "String"
+        },
+        "galleries_externalid": {
+            "defaultValue": "/subscriptions/800222af-1882-419d-963f-5c693c1a56c9/resourceGroups/RG-AzureImageBuilder/providers/Microsoft.Compute/galleries/CoreITImageGalleryAIB",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.VirtualMachineImages/imageTemplates",
+            "apiVersion": "2020-02-14",
+            "name": "[parameters('SKU')]",
+            "location": "westeurope",
+            "identity": {
+                "type": "UserAssigned",
+                "userAssignedIdentities": {
+                    "/subscriptions/800222af-1882-419d-963f-5c693c1a56c9/resourcegroups/RG-AzureImageBuilder/providers/Microsoft.ManagedIdentity/userAssignedIdentities/CoreITAIBIdentity": {}
+                }
+            },
+            "properties": {
+                "source": {
+                    "offer": "office-365",
+                    "publisher": "MicrosoftWindowsDesktop",
+                    "sku": "[parameters('SKU')]",
+                    "type": "PlatformImage",
+                    "version": "latest"
+                },
+                "customize": [
+                    {
+                        "inline": [
+                            "mkdir c:\\\\buildActions",
+                            "echo Azure-Image-Builder-Was-Here  > c:\\\\buildActions\\\\buildActionsOutput.txt"
+                        ],
+                        "name": "settingUpMgmtAgtPath",
+                        "runAsSystem": false,
+                        "runElevated": false,
+                        "type": "PowerShell"
+                    }
+                ],
+                "distribute": [
+                    {
+                        "artifactTags": {
+                            "Project": "AIB",
+                            "Author": "Lars Viding"
+                        },
+                        "excludeFromLatest": false,
+                        "galleryImageId": "[concat(parameters('galleries_externalid'), '/images/', parameters('SKU'))]",
+                        "replicationRegions": [
+                            "westeurope"
+                        ],
+                        "runOutputName": "[concat( 'runOutput', parameters('SKU'))]",
+                        "type": "SharedImage"
+                    }
+                ],
+                "buildTimeoutInMinutes": 0
+            }
+        }
+    ]
+}

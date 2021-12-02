@@ -1,0 +1,1 @@
+﻿Start-AzImageBuilderTemplate -ResourceGroupName 'RG-AzureImageBuilder' -Name '21h1-evd-o365pp' -NoWait -PassThru
