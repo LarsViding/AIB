@@ -18,7 +18,7 @@ $destPublisher = 'Annell'
 $destOffer = 'sv-SE'
 
 #Image definition version
-$version = '1.0.1'
+$version = '1.0.2'
 
 #Staging VM size
 $vmSize = 'Standard_D2_v2'

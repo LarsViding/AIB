@@ -6,13 +6,13 @@ Param (
         ValuefromPipelineByPropertyName = $true,
         ValuefromPipeline = $true
     )]
-    [System.String]$ResourceGruopName = 'YTAzureImageBuilderRG',
+    [System.String]$ResourceGruopName = 'RG-AzureImageBuilder',
     [Parameter(
         Position = 0,
         ValuefromPipelineByPropertyName = $true,
         ValuefromPipeline = $true
     )]
-    [System.String]$ImageTemplateName = 'MicrosoftWindowsDesktop.office-365.20h2-evd-o365pp'
+    [System.String]$ImageTemplateName = 'MicrosoftWindowsDesktop.office-365.21h1-evd-o365pp'
 )
 
 BEGIN {
