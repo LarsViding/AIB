@@ -1,14 +1,15 @@
+# Create VM Image definition and Image template
 # Per Image SKU
-# Create a gallery definition.
+# Create a gallery definition
 $imageResourceGroup = 'RG-AzureImageBuilder'
 $location = 'westeurope'
-$imageDefName = 'CoreITImageForSIG'
+$imageDefName = 'CoreITImageForSIGWin10Only'
 $myGalleryName = 'CoreITImageGalleryAIB'
-$imageTemplateName = 'CoreITWin10Image'
+$imageTemplateName = 'CoreITWin10ImageOnly'
 $runOutputName = 'CoreITDistResults'
-$identityNameResourceId = Get-Content C:\AzureDevOps-LarsViding\AIB-LV\identityNameId.txt
+$identityNameResourceId = Get-Content C:\AzureDevOps-LarsViding\AIB-LV-1\identityNameId.txt
 
-. C:\AzureDevOps-LarsViding\AIB-LV\Get-AzureImageInfo.ps1
+. C:\AzureDevOps-LarsViding\AIB-LV-1\Get-AzureImageInfo.ps1
 $info = Get-AzureImageInfo -Location $location
 
 $ParamNewAzGalleryImageDefinition = @{
