@@ -8,3 +8,5 @@ Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4
 Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/BISF.ps1" -Method GET
 Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/Prep.ps1" -Method GET
 Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/EDGE.ps1" -Method GET
+Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/AdobeReaderDC.ps1" -Method GET
+Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/SetTimeZone.ps1" -Method GET
