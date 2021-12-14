@@ -1,0 +1,65 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "imageTemplates_CoreITWin10ImageOnly_name": {
+            "defaultValue": "CoreITWin10ImageOnly",
+            "type": "String"
+        },
+        "galleries_CoreITImageGalleryAIB_externalid": {
+            "defaultValue": "/subscriptions/800222af-1882-419d-963f-5c693c1a56c9/resourceGroups/RG-AzureImageBuilder/providers/Microsoft.Compute/galleries/CoreITImageGalleryAIB",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.VirtualMachineImages/imageTemplates",
+            "apiVersion": "2020-02-14",
+            "name": "[parameters('imageTemplates_CoreITWin10ImageOnly_name')]",
+            "location": "westeurope",
+            "identity": {
+                "type": "UserAssigned",
+                "userAssignedIdentities": {
+                    "/subscriptions/800222af-1882-419d-963f-5c693c1a56c9/resourcegroups/RG-AzureImageBuilder/providers/Microsoft.ManagedIdentity/userAssignedIdentities/CoreITAIBIdentity": {}
+                }
+            },
+            "properties": {
+                "source": {
+                    "offer": "windows-10",
+                    "publisher": "MicrosoftWindowsDesktop",
+                    "sku": "21h1-evd",
+                    "type": "PlatformImage",
+                    "version": "latest (19043.1348.2111032252)"
+                },
+                "customize": [
+                    {
+                        "inline": [
+                            "mkdir c:\\\\buildActions",
+                            "echo Azure-Image-Builder-Was-Here  > c:\\\\buildActions\\\\buildActionsOutput.txt"
+                        ],
+                        "name": "settingUpMgmtAgtPath",
+                        "runAsSystem": false,
+                        "runElevated": false,
+                        "type": "PowerShell"
+                    }
+                ],
+                "distribute": [
+                    {
+                        "artifactTags": {
+                            "tag": "CoreIT-AIB"
+                        },
+                        "excludeFromLatest": false,
+                        "galleryImageId": "[concat(parameters('galleries_CoreITImageGalleryAIB_externalid'), '/images/CoreITImageForSIGWin10Only')]",
+                        "replicationRegions": [
+                            "westeurope"
+                        ],
+                        "runOutputName": "CoreITDistResults",
+                        "type": "SharedImage"
+                    }
+                ],
+                "buildTimeoutInMinutes": 0
+            }
+        }
+    ]
+}

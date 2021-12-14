@@ -1,0 +1,9 @@
+Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/Prep.ps1" -Method GET
+Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/Outputtest1.ps1" -Method GET
+Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/Prep.ps1" -Method GET
+Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/Prep.ps1" -Method GET
+Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/Prep.ps1" -Method GET
+Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/Prep.ps1" -Method GET
+Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/Prep.ps1" -Method GET
+Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/Prep.ps1" -Method GET
+Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/Prep.ps1" -Method GET
