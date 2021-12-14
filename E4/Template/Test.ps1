@@ -1,9 +1,10 @@
 Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/Prep.ps1" -Method GET
 Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/Outputtest1.ps1" -Method GET
+Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/Outputtest2.ps1" -Method GET
+Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/Powershell.ps1" -Method GET
+Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/GitForWindows.ps1" -Method GET
+Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/FSLogix.ps1" -Method GET
+Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/Teams.ps1" -Method GET
+Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/BISF.ps1" -Method GET
 Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/Prep.ps1" -Method GET
-Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/Prep.ps1" -Method GET
-Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/Prep.ps1" -Method GET
-Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/Prep.ps1" -Method GET
-Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/Prep.ps1" -Method GET
-Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/Prep.ps1" -Method GET
-Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/Prep.ps1" -Method GET
+Invoke-RestMethod -uri "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/EDGE.ps1" -Method GET
