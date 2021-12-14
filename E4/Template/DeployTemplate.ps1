@@ -1,5 +1,5 @@
 # Path to template
-$templateFilePath = ".C:\AzureDevOps-LarsViding\AIB-LV-1\E4\Template\templateQuick.json"
+$templateFilePath = ".C:\AzureDevOps-LarsViding\AIB-LV-1\E4\Template\win10template.json"
 
 # Location
 $location = "westeurope"
@@ -18,7 +18,7 @@ $destPublisher = 'Annell'
 $destOffer = 'sv-SE'
 
 #Image definition version
-$version = '1.0.2'
+$version = '1.0.6'
 
 #Staging VM size
 $vmSize = 'Standard_D2_v2'
