@@ -3,11 +3,11 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "SrcSKU": {
-            "defaultValue": "21h1-evd-o365pp",
+            "defaultValue": "21h1-evd",
             "type": "string"
         },
         "SrcOffer": {
-            "defaultValue": "office-365",
+            "defaultValue": "windows-10",
             "type": "string"
         },
         "SrcPublisher": {
@@ -112,15 +112,22 @@
                         "type": "PowerShell",
                         "runAsSystem": true,
                         "runElevated": true,
-                        "name": "VSCode",
-                        "scriptUri": "https://raw.githubusercontent.com/JimMoyle/YouTube-WVD-Image-Deployment/main/E4/AppInstallScripts/VSCode.ps1"
+                        "name": "FSLogix",
+                        "scriptUri": "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/FSLogix.ps1"
                     },
                     {
                         "type": "PowerShell",
                         "runAsSystem": true,
                         "runElevated": true,
-                        "name": "FSLogix",
-                        "scriptUri": "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/FSLogix.ps1"
+                        "name": "AdobeReaderDC",
+                        "scriptUri": "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/EDGE.ps1"
+                    },
+                    {
+                        "type": "PowerShell",
+                        "runAsSystem": true,
+                        "runElevated": true,
+                        "name": "EDGE",
+                        "scriptUri": "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/EDGE.ps1"
                     },
                     {
                         "type": "PowerShell",
