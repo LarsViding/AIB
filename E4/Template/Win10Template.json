@@ -120,7 +120,7 @@
                         "runAsSystem": true,
                         "runElevated": true,
                         "name": "AdobeReaderDC",
-                        "scriptUri": "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/EDGE.ps1"
+                        "scriptUri": "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/AdobeReaderDC.ps1"
                     },
                     {
                         "type": "PowerShell",
@@ -135,6 +135,13 @@
                         "runElevated": true,
                         "name": "Teams",
                         "scriptUri": "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/Teams.ps1"
+                    },
+                    {
+                        "type": "PowerShell",
+                        "runAsSystem": true,
+                        "runElevated": true,
+                        "name": "TimeZone",
+                        "scriptUri": "https://raw.githubusercontent.com/LarsViding/AIB/main/E4/AppInstallScripts/SetTimeZone.ps1"
                     },
                     {
                         "type": "WindowsRestart",
