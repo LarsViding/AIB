@@ -9,8 +9,8 @@ $myVersion = $Ring | Where-Object { $_.Architecture -eq 'AMD64'}
 $fileName = split-path $myVersion.uri -Leaf
 $outFile = join-path 'c:\CustomizerArtifacts' $fileName
 Invoke-WebRequest $myVersion.uri -OutFile $outFile
-$extPath = Join-Path  $BuildDir 'OneDrive'
-Start-Process -FilePath (Join-Path $extPath "\OneDriveSetup.exe") -ArgumentList '/allusers' -Wait
+# $extPath = Join-Path  $BuildDir 'OneDrive'
+Start-Process -FilePath (Join-Path $BuildDir "\OneDriveSetup.exe") -ArgumentList '/allusers' -Wait
 Remove-Item $outFile
-Remove-Item $extPath -Recurse
+# Remove-Item $extPath -Recurse
 Write-Output 'OneDrive Installed'
