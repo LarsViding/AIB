@@ -1,5 +1,5 @@
 # Path to template
-$templateFilePath = ".C:\AzureDevOps-LarsViding\AIB-LV-1\E4\Template\win10template.json"
+$templateFilePath = "C:\AzureDevOps-LarsViding\AIB-LV-1\E4\Template\win10o365template.json"
 
 # Location
 $location = "westeurope"
@@ -14,11 +14,11 @@ $identityName = 'CoreITAIBIdentity'
 $sigGalleryName = "CoreITImageGalleryAIB"
 
 #image definition 'name'
-$destPublisher = 'Annell'
+$destPublisher = 'LViding'
 $destOffer = 'sv-SE'
 
 #Image definition version
-$version = '1.0.6'
+$version = '1.0.1'
 
 #Staging VM size
 $vmSize = 'Standard_D2_v2'

@@ -7,7 +7,8 @@ $allVersions = Find-EvergreenApp -Name MicrosoftTeams | Get-EvergreenApp
 $mostRecent = $allVersions | Sort-Object -Descending -Property 'Version' | Select-Object -First 1 | Select-Object -ExpandProperty 'Version'
 $allOnVersion = $allVersions | Where-Object { $_.version -eq $mostRecent }
 $myVersion2 = $allOnVersion | Where-Object { $_.Architecture -eq 'x64' }
-$myVersion = $myVersion2 | Where-Object { $_.Type -eq 'msi' }
+$myMSIVersion = $myVersion2 | Where-Object { $_.Type -eq 'msi' }
+$myVersion = $myMSIVersion | Where-Object { $_.Ring -eq 'General' }
 $fileName = split-path $myVersion.uri -Leaf
 $outFile = join-path 'c:\CustomizerArtifacts' $fileName
 if (-not(Test-Path $outFile)) {

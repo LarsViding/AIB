@@ -3,9 +3,9 @@
 # Create a gallery definition
 $imageResourceGroup = 'RG-AzureImageBuilder'
 $location = 'westeurope'
-$imageDefName = 'CoreITImageForSIGWin10Only'
+$imageDefName = 'CoreITImageForSIGWin10o365pp'
 $myGalleryName = 'CoreITImageGalleryAIB'
-$imageTemplateName = 'CoreITWin10ImageOnly'
+$imageTemplateName = 'CoreITWin10o365ppImage'
 $runOutputName = 'CoreITDistResults'
 $identityNameResourceId = Get-Content C:\AzureDevOps-LarsViding\AIB-LV-1\identityNameId.txt
 
