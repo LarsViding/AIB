@@ -10,6 +10,8 @@ Connect-AzAccount
 # Connect to CoreIT - subscription [LV_Visual Studio Enterprise]
 Select-AzSubscription -Tenant 1bfe4f0c-0d5d-4c58-9af7-455d8de9eace -Subscription 1bf14e9e-6a63-4772-abba-564bafb3865b
 
+Get-AzContext
+
 # Your Azure Subscription ID
 $subscriptionID = (Get-AzContext).Subscription.Id
 # Destination image resource group name
@@ -21,12 +23,13 @@ $imageResourceGroup = 'RG-AzureImageBuilder'
 
 #Custom Azure Marketplace image verification function (find in E1)
 . C:\AzureDevOps-LarsViding\AIB-LV-1\Get-AzureImageInfo.ps1
-
+<#
 $info = Get-AzureImageInfo -Location $location
 
 $Sku = $info.sku
 $srcPublisher = $info.Publisher
 $srcOffer = $info.Offer
+#>
 
 #Register the following resource providers for use with your Azure subscription if they aren't already registered.
 Register-AzProviderFeature -ProviderNamespace Microsoft.VirtualMachineImages -FeatureName VirtualMachineTemplatePreview -ErrorAction SilentlyContinue
