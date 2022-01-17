@@ -69,7 +69,7 @@ $identityNamePrincipalId = $identity.PrincipalId
 $myRoleImageCreationUrl = 'https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json'
 $myRoleImageCreationPath = "C:\AzureDevOps-LarsViding\AIB-LV-1\myRoleImageCreation.json"
 
-Invoke-WebRequest -Uri $myRoleImageCreationUrl -OutFile $myRoleImageCreationPath -UseBasicParsing
+Invoke-WebRequest -Uri $myRoleImageCreationUrl -OutFile $myRoleImageCreationPath -UseBasicParsing  
 
 $Content = Get-Content -Path $myRoleImageCreationPath -Raw
 $Content = $Content -replace '<subscriptionID>', $subscriptionID

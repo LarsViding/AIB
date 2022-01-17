@@ -1,5 +1,5 @@
 # Path to template
-$templateFilePath = "C:\AzureDevOps-LarsViding\AIB-LV-1\E4\Template\win10o365template.json"
+$templateFilePath = "C:\AzureDevOps-LarsViding\AIB-LV-1\E4\Template\win10o365templatewithoutTeams.json"
 
 # Location
 $location = "westeurope"
