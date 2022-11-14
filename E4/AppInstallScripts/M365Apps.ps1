@@ -15,8 +15,8 @@ $XMLfileName = split-path $XMLfileURI -Leaf
 $outXML = Join-Path 'c:\CustomizerArtifacts' $XMLfileName
 Invoke-WebRequest $XMLfileURI -OutFile $outXML
 
-C:\CustomizerArtifacts\Setup.exe /download Annell-32bit-NO-teams-AVD.xml
-C:\CustomizerArtifacts\Setup.exe /configure Annell-32bit-NO-teams-AVD.xml
+# C:\CustomizerArtifacts\Setup.exe /download Annell-32bit-NO-teams-AVD.xml
+# C:\CustomizerArtifacts\Setup.exe /configure Annell-32bit-NO-teams-AVD.xml
 
 Start-Process -FilePath (Join-Path $BuildDir "\Setup.exe") /download Annell-32bit-NO-teams-AVD.xml -Wait
 Start-Process -FilePath (Join-Path $BuildDir "\Setup.exe") /configure Annell-32bit-NO-teams-AVD.xml -Wait
